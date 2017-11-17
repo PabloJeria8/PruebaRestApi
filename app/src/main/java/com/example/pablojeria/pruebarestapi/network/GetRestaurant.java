@@ -1,6 +1,6 @@
 package com.example.pablojeria.pruebarestapi.network;
 
-import com.example.pablojeria.pruebarestapi.models.Restaurant;
+import com.example.pablojeria.pruebarestapi.models.RestaurantsWrapper;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -13,6 +13,6 @@ import retrofit2.http.Query;
 public interface GetRestaurant {
 
     @GET("collections?city_id=83&lat=-33.440914&lon=-70.653654&count=10")
-    Call<Restaurant> get(@Query("count") int count);
+    Call<RestaurantsWrapper> get(@Query("count") int count);
 
 }

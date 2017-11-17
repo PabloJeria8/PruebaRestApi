@@ -1,13 +1,16 @@
 package com.example.pablojeria.pruebarestapi.background;
 
 import android.os.AsyncTask;
-import android.util.Log;
 
 import com.example.pablojeria.pruebarestapi.models.Restaurant;
+import com.example.pablojeria.pruebarestapi.models.RestaurantContainer;
+import com.example.pablojeria.pruebarestapi.models.RestaurantsWrapper;
 import com.example.pablojeria.pruebarestapi.network.GetRestaurant;
 import com.example.pablojeria.pruebarestapi.network.RestaurantInterceptor;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Response;
@@ -16,26 +19,29 @@ import retrofit2.Response;
  * Created by pablojeria on 15-11-17.
  */
 
-public class GetDataRestaurant extends AsyncTask<Void, Void, Restaurant> {
+public class GetDataRestaurant extends AsyncTask<Void, Void, List<Restaurant>> {
 
 
     @Override
-    protected Restaurant doInBackground(Void... voids) {
+    protected List<Restaurant> doInBackground(Void... voids) {
 
         GetRestaurant request =  new RestaurantInterceptor().get();
-        Call<Restaurant> call = request.get(10);
+        Call<RestaurantsWrapper> call = request.get(10);
 
-        Restaurant list = new Restaurant();
+        List<Restaurant> restaurants = new ArrayList<>();
 
         try {
-            Response<Restaurant> response = call.execute();
-
+            Response<RestaurantsWrapper> response = call.execute();
             if (200 == response.code() && response.isSuccessful()) {
-
-                    list = response.body();
-
-                    Log.d("PJMLIST", String.valueOf(list.getCollections()));
-
+                RestaurantsWrapper wrapper = response.body();
+                    if (wrapper != null) {
+                        RestaurantContainer[] container = wrapper.getCollections();
+                        if (container != null && container.length > 0) {
+                            for (RestaurantContainer contain : container) {
+                                restaurants.add(contain.getCollection());
+                            }
+                        }
+                    }
                 }
 
         } catch (IOException e) {
@@ -43,8 +49,7 @@ public class GetDataRestaurant extends AsyncTask<Void, Void, Restaurant> {
         }
 
 
-        Log.d("PJMLIST2", String.valueOf(list));
-        return list;
+        return restaurants;
     }
 
 
