@@ -1,27 +1,35 @@
 package com.example.pablojeria.pruebarestapi.models;
 
 public class Restaurant {
-    private int has_total, has_more;
-    private RestaurantCollections[] collections;
-    private String share_url, display_text;
+
+    private int collection_id, res_count;
+    private String image_url, share_url, description, title, url;
 
     public Restaurant() {
     }
 
-    public int getHas_total() {
-        return this.has_total;
+    public int getCollection_id() {
+        return this.collection_id;
     }
 
-    public void setHas_total(int has_total) {
-        this.has_total = has_total;
+    public void setCollection_id(int collection_id) {
+        this.collection_id = collection_id;
     }
 
-    public RestaurantCollections[] getCollections() {
-        return this.collections;
+    public int getRes_count() {
+        return this.res_count;
     }
 
-    public void setCollections(RestaurantCollections[] collections) {
-        this.collections = collections;
+    public void setRes_count(int res_count) {
+        this.res_count = res_count;
+    }
+
+    public String getImage_url() {
+        return this.image_url;
+    }
+
+    public void setImage_url(String image_url) {
+        this.image_url = image_url;
     }
 
     public String getShare_url() {
@@ -32,19 +40,27 @@ public class Restaurant {
         this.share_url = share_url;
     }
 
-    public int getHas_more() {
-        return this.has_more;
+    public String getDescription() {
+        return this.description;
     }
 
-    public void setHas_more(int has_more) {
-        this.has_more = has_more;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public String getDisplay_text() {
-        return this.display_text;
+    public String getTitle() {
+        return this.title;
     }
 
-    public void setDisplay_text(String display_text) {
-        this.display_text = display_text;
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getUrl() {
+        return this.url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 }

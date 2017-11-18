@@ -9,13 +9,14 @@ import android.view.MenuItem;
 
 import com.example.pablojeria.pruebarestapi.background.GetDataRestaurant;
 import com.example.pablojeria.pruebarestapi.models.Restaurant;
+import com.example.pablojeria.pruebarestapi.models.RestaurantsWrapper;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    private List<Restaurant> example = new ArrayList<>();
+    private List<RestaurantsWrapper> example = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        new Test().execute();
+        new GetRestaurants().execute();
     }
 
     @Override
@@ -49,14 +50,14 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private class Test extends GetDataRestaurant {
+    private class GetRestaurants extends GetDataRestaurant {
 
         @Override
-        protected void onPostExecute(Restaurant restaurants) {
-            super.onPostExecute(restaurants);
-
-            Log.d("Test", String.valueOf(restaurants));
-
+        protected void onPostExecute(List<Restaurant> restaurants) {
+            //TODO this loop if for demostration only, deleted and then put the data wherever you want to
+            for (Restaurant restaurant : restaurants) {
+                Log.d("RESTAURANT", "title: " + restaurant.getTitle());
+            }
         }
     }
 }
