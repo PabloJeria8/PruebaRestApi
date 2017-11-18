@@ -1,6 +1,7 @@
 package com.example.pablojeria.pruebarestapi.background;
 
 import android.os.AsyncTask;
+import android.util.Log;
 
 import com.example.pablojeria.pruebarestapi.models.Restaurant;
 import com.example.pablojeria.pruebarestapi.models.RestaurantContainer;
@@ -40,6 +41,13 @@ public class GetDataRestaurant extends AsyncTask<Void, Void, List<Restaurant>> {
                             for (RestaurantContainer contain : container) {
                                 restaurants.add(contain.getCollection());
                             }
+
+                            if (restaurants.size() > 0) {
+                                for (Restaurant restaurant : restaurants) {
+                                    Log.d("PjmA", restaurant.getTitle());
+                                }
+                            }
+
                         }
                     }
                 }

@@ -1,4 +1,4 @@
-package com.example.pablojeria.pruebarestapi;
+package com.example.pablojeria.pruebarestapi.views;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.pablojeria.pruebarestapi.R;
 import com.example.pablojeria.pruebarestapi.background.GetDataRestaurant;
 import com.example.pablojeria.pruebarestapi.models.Restaurant;
 import com.example.pablojeria.pruebarestapi.models.RestaurantsWrapper;
